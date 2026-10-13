@@ -1,0 +1,26 @@
+# Local database & runtime data (never commit the Head Office database)
+data/
+backups/
+logs/
+printouts/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# Build artefacts
+build/
+dist/
+*.spec
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
