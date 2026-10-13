@@ -54,7 +54,17 @@ python main.py
 pip install pyinstaller
 python build_windows.py
 ```
-`dist\HFTC\HFTC.exe` بن جائے گا — اسے کسی بھی Windows PC پر کاپی کر کے چلایا جا سکتا ہے۔
+`dist\HFTC.exe` بن جائے گا (single file) — اسے کسی بھی Windows PC پر کاپی کر کے ڈبل کلک سے چلایا جا سکتا ہے۔
+
+سب سے آسان: **`build.bat` پر ڈبل کلک کریں** — یہ خود PyInstaller انسٹال کر کے `.exe` بنا دیتا ہے۔
+مکمل قدم بہ قدم گائیڈ (اردو) یہاں ہے: [`docs/how-to-build-exe.md`](docs/how-to-build-exe.md)
+
+**اختیاری سُوچ:**
+```bat
+python build_windows.py --onedir        :: ایک فولڈر build (تیز start)
+python build_windows.py --debug         :: console window کے ساتھ (errors دیکھنے کے لیے)
+python build_windows.py --install-deps  :: PyInstaller خود انسٹال کر دے
+```
 
 > **نوٹ:** صرف Python standard library درکار ہے (tkinter + sqlite3 دونوں CPython کے ساتھ آتے ہیں)۔
 > کوئی `pip install` لازمی نہیں۔
@@ -67,8 +77,15 @@ python build_windows.py
 hf-tc-software/
 ├── main.py                  # entry point
 ├── run.bat / run.sh         # launchers
-├── build_windows.py         # PyInstaller build
-├── requirements.txt
+├── build.bat / build.sh     # one-click builder (Windows / Linux-macOS)
+├── build_windows.py         # PyInstaller build script
+├── requirements.txt         # runtime (stdlib only)
+├── requirements-build.txt   # build-only (PyInstaller)
+├── assets/
+│   ├── hftc.ico             # Windows app icon
+│   └── hftc_icon.png        # icon source
+├── docs/
+│   └── how-to-build-exe.md  # مکمل اردو گائیڈ (.exe بنانے کا طریقہ)
 ├── hftc/
 │   ├── config.py            # paths, settings, bilingual labels
 │   ├── schema.sql           # SQLite schema (11 tables + indexes)
@@ -85,7 +102,7 @@ hf-tc-software/
 │       ├── widgets.py       # Card, StatCard, FormField, DataTable
 │       └── screens.py       # all module screens
 ├── tests/                   # pytest suite (24 tests)
-└── tools/                   # ui_smoke.py, render_samples.py
+└── tools/                   # ui_smoke.py, render_samples.py, make_icon.py
 ```
 
 ### ڈیٹا بیس ٹیبلز
@@ -97,12 +114,12 @@ hf-tc-software/
 ## 🧮 حساب کتاب کے اصول
 
 - **بقایا رقم** = کل رقم − (ایڈوانس + تمام وصول شدہ اقساط)
-- **ایڈوانس** کھاتا بناتے وقت پہلی ledger row کے طور پر درج ہوتا ہے
+- **ایڈوانس** کھاتہ بناتے وقت پہلی ledger row کے طور پر درج ہوتا ہے
 - **قسط ماہانہ** کی بنیاد پر اقساط کی تعداد خود بخود شمار ہوتی ہے
 - **لیٹ جرمانہ** = فی چکر جرمانہ × چھوڑے گئے چکر (due day کی بنیاد پر)
 - ہر وصولی خود بخود **روزنامچہ (Cash Book)** میں آمد بن جاتی ہے
 - ہر خرچ خود بخود **روزنامچہ** میں خرچ بن جاتا ہے
-- کھاتا مکمل ادا ہونے پر خود بخود **closed** ہو جاتا ہے
+- کھاتہ مکمل ادا ہونے پر خود بخود **closed** ہو جاتا ہے
 
 ---
 
@@ -110,7 +127,7 @@ hf-tc-software/
 
 ```bash
 pip install pytest
-python -m pytest -q                 # 24 tests
+python -m pytest -q                    # 24 tests
 xvfb-run -a python tools/ui_smoke.py   # headless UI smoke test (Linux)
 python tools/render_samples.py         # sample printouts -> docs/samples/
 ```
