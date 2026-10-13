@@ -1,0 +1,7 @@
+# HF TC - Collection & Accounts Software
+# Dependencies needed ONLY for building the standalone .exe / binary.
+# The application itself runs on the Python standard library only.
+#
+# Install with:
+#     pip install -r requirements-build.txt
+pyinstaller>=6.0

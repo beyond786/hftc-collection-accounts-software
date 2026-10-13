@@ -2,5 +2,8 @@
 # The application itself only needs the Python standard library
 # (tkinter + sqlite3 are bundled with CPython on Windows).
 #
+# Building the standalone .exe needs PyInstaller - see requirements-build.txt
+#     pip install pyinstaller
+#
 # Optional extras used by the developer tooling / tests:
 pytest>=7.4
