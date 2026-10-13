@@ -1,0 +1,6 @@
+# HF TC - Collection & Accounts Software
+# The application itself only needs the Python standard library
+# (tkinter + sqlite3 are bundled with CPython on Windows).
+#
+# Optional extras used by the developer tooling / tests:
+pytest>=7.4
