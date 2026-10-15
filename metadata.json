@@ -1,0 +1,6 @@
+{
+  "name": "HF TC - Collection & Accounts Software",
+  "description": "ہمدرد فوجی ٹریڈنگ کارپوریشن (HF TC) collection, customer accounts, installment receipts, stock inventory, and financial management application.",
+  "prompt": "Rewrite imported Python desktop software beyond786/hftc-collection-accounts-software as a complete Angular application.",
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
